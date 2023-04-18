@@ -3,8 +3,8 @@ import React from "react";
 function Babel() {
   return (
     <>
-      <div>In Div</div>
-      <p>in P</p>
+      <div class="center">IN DIV</div>
+      <p class="center">IN P</p>
     </>
   );
 }
