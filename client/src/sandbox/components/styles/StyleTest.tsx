@@ -11,7 +11,7 @@ const StyleTest = () => {
 
   return (
     <>
-      <h1 style={{ backgroundColor: "yellow" }}>Title</h1>
+      <h1 style={{ backgroundColor: "yellow" }}>title</h1>
       <h2 style={purple}>Subtitle</h2>
       <hr />
       <p className="green">Paragraph</p>
