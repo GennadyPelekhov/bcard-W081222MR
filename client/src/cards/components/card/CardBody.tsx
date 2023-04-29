@@ -7,7 +7,7 @@ type Props = { card: CardInterface };
 
 const CardBody: React.FC<Props> = ({ card }) => {
   const { title, subtitle, phone, address, bizNumber } = card;
-  const { street, houseNumber, city } = address;
+  const { street, houseNumber, city, country } = address;
   return (
     <CardContent sx={{ pb: 1 }}>
       <CardHeader title={title} subheader={subtitle} sx={{ p: 0, mb: 1 }} />
@@ -16,7 +16,7 @@ const CardBody: React.FC<Props> = ({ card }) => {
         <CardBodyRow title="Phone" content={phone} />
         <CardBodyRow
           title="Address"
-          content={`${street} ${houseNumber} ${city}`}
+          content={`${street} ${houseNumber} ${city} ${country}`}
         />
         <CardBodyRow title="Card Number" content={String(bizNumber)} />
       </Box>

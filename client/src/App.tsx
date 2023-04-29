@@ -1,6 +1,8 @@
 import React from "react";
 import "./App.css";
-import OnClick from "./sandbox/events/OnClick";
+import CardsPage from "./cards/pages/CardsPage";
+// import OnClick from "./sandbox/events/OnClick";
+// import RaisingEvents from "./sandbox/events/RaisingEvents";
 // import Card from "./cards/components/card/Card";
 // import Cards from "./cards/components/Cards";
 // import Card from "./cards/components/card/Card";
@@ -38,7 +40,9 @@ function App() {
       {/* <PropsTs /> */}
       {/* <Loops /> */}
       {/* <Cards /> */}
-      <OnClick />
+      {/* <OnClick /> */}
+      {/* <RaisingEvents /> */}
+      <CardsPage />
     </div>
   );
 }
