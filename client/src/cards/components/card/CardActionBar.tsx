@@ -7,7 +7,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 
 type Props = {
   onDelete: (id: string) => void;
-  onEdit: (id: string) => void;
+  // onEdit: (id: string) => void;
   onLike: (id: string) => void;
   cardId: string;
 };
@@ -15,16 +15,17 @@ type Props = {
 const CardActionBar: React.FC<Props> = ({
   onDelete,
   cardId,
-  onEdit,
+  // onEdit,
   onLike,
 }) => {
+  const HandleCardEdit = () => console.log(`You edit card no: ${cardId}`);
   return (
     <CardActions disableSpacing sx={{ pt: 0, justifyContent: "space-between" }}>
       <Box>
         <IconButton onClick={() => onDelete(cardId)} aria-label="delete card">
           <DeleteIcon />
         </IconButton>
-        <IconButton onClick={() => onEdit(cardId)} aria-label="edit card">
+        <IconButton onClick={HandleCardEdit} aria-label="edit card">
           <EditIcon />
         </IconButton>
       </Box>

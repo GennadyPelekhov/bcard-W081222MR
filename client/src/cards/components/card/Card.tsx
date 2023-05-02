@@ -8,11 +8,11 @@ import CardActionBar from "./CardActionBar";
 type Props = {
   card: CardInterface;
   onDelete: (id: string) => void;
-  onEdit: (id: string) => void;
+  // onEdit: (id: string) => void;
   onLike: (id: string) => void;
 };
 
-const Card: React.FC<Props> = ({ card, onDelete, onEdit, onLike }) => {
+const Card: React.FC<Props> = ({ card, onDelete, onLike }) => {
   return (
     <MuiCard sx={{ minWidth: 280 }} raised>
       <CardHead image={card.image} />
@@ -20,7 +20,7 @@ const Card: React.FC<Props> = ({ card, onDelete, onEdit, onLike }) => {
       <CardActionBar
         onDelete={onDelete}
         onLike={onLike}
-        onEdit={onEdit}
+        // onEdit={onEdit}
         cardId={card._id}
       />
     </MuiCard>

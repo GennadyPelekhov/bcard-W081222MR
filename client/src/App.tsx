@@ -1,6 +1,11 @@
 import React from "react";
 import "./App.css";
-import CardsPage from "./cards/pages/CardsPage";
+import SetPost from "./sandbox/use-state/SetPost";
+// import UseStateWithArrayOfObjects from "./sandbox/use-state/UseStateWithArrayOfObjects";
+// import UseState from "./sandbox/use-state/UseState";
+// import AboutPage from "./pages/AboutPage";
+// import ErrorPage from "./pages/ErrorPage";
+// import CardsPage from "./cards/pages/CardsPage";
 // import OnClick from "./sandbox/events/OnClick";
 // import RaisingEvents from "./sandbox/events/RaisingEvents";
 // import Card from "./cards/components/card/Card";
@@ -42,7 +47,12 @@ function App() {
       {/* <Cards /> */}
       {/* <OnClick /> */}
       {/* <RaisingEvents /> */}
-      <CardsPage />
+      {/* <CardsPage /> */}
+      {/* <AboutPage /> */}
+      {/* <ErrorPage /> */}
+      {/* <UseState /> */}
+      <SetPost />
+      {/* <UseStateWithArrayOfObjects /> */}
     </div>
   );
 }
