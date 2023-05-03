@@ -1,11 +1,14 @@
 import React from "react";
 import "./App.css";
-import SetPost from "./sandbox/use-state/SetPost";
+import Layout from "./layout/Layout";
+// import SetPost from "./sandbox/use-state/SetPost";
 // import UseStateWithArrayOfObjects from "./sandbox/use-state/UseStateWithArrayOfObjects";
 // import UseState from "./sandbox/use-state/UseState";
 // import AboutPage from "./pages/AboutPage";
 // import ErrorPage from "./pages/ErrorPage";
 // import CardsPage from "./cards/pages/CardsPage";
+import { BrowserRouter } from "react-router-dom";
+import Router from "./routes/Router";
 // import OnClick from "./sandbox/events/OnClick";
 // import RaisingEvents from "./sandbox/events/RaisingEvents";
 // import Card from "./cards/components/card/Card";
@@ -30,29 +33,34 @@ import SetPost from "./sandbox/use-state/SetPost";
 function App() {
   return (
     <div className="App">
-      {/* <Test /> */}
-      {/* <Logic /> */}
-      {/* <StringIntDemo /> */}
-      {/* <Template/> */}
-      {/* <Styles /> */}
-      {/* <StyleModule /> */}
-      {/* <StyleTest /> */}
-      {/* <MuiTypography /> */}
-      {/* <CardBody /> */}
-      {/* <MuiButton /> */}
-      {/* <Card /> */}
-      {/* <FatherPropsString /> */}
-      {/* <PropsTs /> */}
-      {/* <Loops /> */}
-      {/* <Cards /> */}
-      {/* <OnClick /> */}
-      {/* <RaisingEvents /> */}
-      {/* <CardsPage /> */}
-      {/* <AboutPage /> */}
-      {/* <ErrorPage /> */}
-      {/* <UseState /> */}
-      <SetPost />
-      {/* <UseStateWithArrayOfObjects /> */}
+      <BrowserRouter>
+        <Layout>
+          {/* <CardsPage /> */}
+          {/* <AboutPage /> */}
+          {/* <ErrorPage /> */}
+          {/* <Test /> */}
+          {/* <Logic /> */}
+          {/* <StringIntDemo /> */}
+          {/* <Template/> */}
+          {/* <Styles /> */}
+          {/* <StyleModule /> */}
+          {/* <StyleTest /> */}
+          {/* <MuiTypography /> */}
+          {/* <CardBody /> */}
+          {/* <MuiButton /> */}
+          {/* <Card /> */}
+          {/* <FatherPropsString /> */}
+          {/* <PropsTs /> */}
+          {/* <Loops /> */}
+          {/* <Cards /> */}
+          {/* <OnClick /> */}
+          {/* <RaisingEvents /> */}
+          {/* <UseState /> */}
+          {/* <SetPost /> */}
+          {/* <UseStateWithArrayOfObjects /> */}
+          <Router />
+        </Layout>
+      </BrowserRouter>
     </div>
   );
 }
