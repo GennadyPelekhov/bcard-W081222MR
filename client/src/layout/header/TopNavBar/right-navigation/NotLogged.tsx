@@ -9,13 +9,7 @@ const NotLogged = () => {
   return (
     <Box>
       <NavItem label="Signup" to={ROUTES.SINGUP} />
-      {/* <Button color="inherit">
-        <Typography>Signup</Typography>
-      </Button> */}
       <NavItem label="Login" to={ROUTES.LOGIN} />
-      {/* <Button color="inherit">
-        <Typography>Login</Typography>
-      </Button> */}
     </Box>
   );
 };

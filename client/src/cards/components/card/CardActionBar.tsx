@@ -4,28 +4,34 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import PhoneIcon from "@mui/icons-material/Phone";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useNavigate } from "react-router-dom";
+import ROUTES from "../../../routes/routesModel";
 
 type Props = {
-  onDelete: (id: string) => void;
-  // onEdit: (id: string) => void;
-  onLike: (id: string) => void;
   cardId: string;
 };
 
-const CardActionBar: React.FC<Props> = ({
-  onDelete,
-  cardId,
-  // onEdit,
-  onLike,
-}) => {
-  const HandleCardEdit = () => console.log(`You edit card no: ${cardId}`);
+const CardActionBar: React.FC<Props> = ({ cardId }) => {
+  const navigate = useNavigate();
+
+  const HandleCardEdit = () => navigate(`${ROUTES.CARD_EDIT}/${cardId}`);
+  const HandleCardDelete = () => console.log(`You deleted card no: ${cardId}`);
+  const HandleCardLike = () => console.log(`You liked card no: ${cardId}`);
   return (
     <CardActions disableSpacing sx={{ pt: 0, justifyContent: "space-between" }}>
       <Box>
-        <IconButton onClick={() => onDelete(cardId)} aria-label="delete card">
+        <IconButton
+          title="Delete Card"
+          onClick={HandleCardDelete}
+          aria-label="delete card"
+        >
           <DeleteIcon />
         </IconButton>
-        <IconButton onClick={HandleCardEdit} aria-label="edit card">
+        <IconButton
+          title="Edit Card"
+          onClick={HandleCardEdit}
+          aria-label="edit card"
+        >
           <EditIcon />
         </IconButton>
       </Box>
@@ -33,7 +39,11 @@ const CardActionBar: React.FC<Props> = ({
         <IconButton aria-label="call business">
           <PhoneIcon />
         </IconButton>
-        <IconButton onClick={() => onLike(cardId)} aria-label="add to fav">
+        <IconButton
+          title="Add to favorites"
+          onClick={HandleCardLike}
+          aria-label="add to fav"
+        >
           <FavoriteIcon />
         </IconButton>
       </Box>

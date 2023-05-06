@@ -2,7 +2,7 @@ import React from "react";
 
 const ConditionalRendering = () => {
   let cards = [];
-  //   cards = ["one", "two", "three"];
+  cards = ["one", "two", "three"];
 
   if (!cards.length) return <p>Opps... no cards in the database...</p>;
 

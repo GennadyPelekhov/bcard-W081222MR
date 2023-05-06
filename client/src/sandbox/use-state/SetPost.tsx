@@ -1,5 +1,5 @@
 import React, { useState, MouseEvent } from "react";
-import "./setPost.css";
+// import "./setPost.css";
 
 interface Post {
   title: string;
@@ -33,8 +33,11 @@ const SetPost = () => {
 
   return (
     <>
-      <div>
-        <button onClick={() => setIsLogged((prev) => (prev = !prev))}>
+      <div style={{ padding: "16px" }}>
+        <button
+          style={{ padding: "5px", width: "100px" }}
+          onClick={() => setIsLogged((prev) => (prev = !prev))}
+        >
           {isLogged ? "Logout" : "Login"}
         </button>
         <h1>Title:{post.title}</h1>
@@ -45,6 +48,7 @@ const SetPost = () => {
       {isLogged && (
         <form>
           <input
+            style={{ margin: "10px" }}
             type="text"
             placeholder="Enter the title:"
             value={post.title}
@@ -53,6 +57,7 @@ const SetPost = () => {
             }
           />
           <input
+            style={{ margin: "10px" }}
             type="text"
             placeholder="Enter the subtitle:"
             value={post.subtitle}
@@ -61,6 +66,7 @@ const SetPost = () => {
             }
           />
           <input
+            style={{ margin: "10px" }}
             type="text"
             placeholder="Enter the author:"
             value={post.author}
@@ -69,6 +75,7 @@ const SetPost = () => {
             }
           />
           <button
+            style={{ padding: "5px", width: "100px" }}
             onClick={createNewPost}
             disabled={!post.title || !post.subtitle || !post.author}
           >
@@ -77,21 +84,71 @@ const SetPost = () => {
         </form>
       )}
       {!!posts.length && isLogged && (
-        <table>
+        <table
+          style={{
+            width: "800px",
+            margin: "10px",
+            border: "2px solid black",
+            borderCollapse: "collapse",
+            letterSpacing: "1px",
+          }}
+        >
           <tr>
-            <th>No:</th>
-            <th>Title:</th>
-            <th>Subtitle:</th>
-            <th>Author:</th>
-            <th>Created at:</th>
+            <th style={{ padding: "10px", border: "1px solid black" }}>No:</th>
+            <th style={{ padding: "10px", border: "1px solid black" }}>
+              Title:
+            </th>
+            <th style={{ padding: "10px", border: "1px solid black" }}>
+              Subtitle:
+            </th>
+            <th style={{ padding: "10px", border: "1px solid black" }}>
+              Author:
+            </th>
+            <th style={{ padding: "10px", border: "1px solid black" }}>
+              Created at:
+            </th>
           </tr>
           {posts.map((post, index) => (
             <tr key={index}>
-              <th>{index + 1}</th>
-              <td>{post.title}</td>
-              <td>{post.subtitle}</td>
-              <td>{post.author}</td>
-              <td>{post.createdAt.toLocaleString()}</td>
+              <th style={{ padding: "10px", border: "1px solid black" }}>
+                {index + 1}
+              </th>
+              <td
+                style={{
+                  padding: "10px",
+                  border: "1px solid black",
+                  textAlign: "center",
+                }}
+              >
+                {post.title}
+              </td>
+              <td
+                style={{
+                  padding: "10px",
+                  border: "1px solid black",
+                  textAlign: "center",
+                }}
+              >
+                {post.subtitle}
+              </td>
+              <td
+                style={{
+                  padding: "10px",
+                  border: "1px solid black",
+                  textAlign: "center",
+                }}
+              >
+                {post.author}
+              </td>
+              <td
+                style={{
+                  padding: "10px",
+                  border: "1px solid black",
+                  textAlign: "center",
+                }}
+              >
+                {post.createdAt.toLocaleString()}
+              </td>
             </tr>
           ))}
         </table>

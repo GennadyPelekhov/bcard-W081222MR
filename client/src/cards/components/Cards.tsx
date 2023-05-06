@@ -8,11 +8,6 @@ type Props = {
 };
 
 const Cards: React.FC<Props> = ({ cards }) => {
-  const HandleCardDelete = (id: string) =>
-    console.log(`You deleted card no: ${id}`);
-  // const HandleCardEdit = (id: string) => console.log(`You edit card no: ${id}`);
-  const HandleCardLike = (id: string) =>
-    console.log(`You liked card no: ${id}`);
 
   if (!cards.length)
     return (
@@ -31,9 +26,6 @@ const Cards: React.FC<Props> = ({ cards }) => {
           return (
             <Grid item key={card._id} xs={12} sm={6} md={4}>
               <Card
-                onDelete={HandleCardDelete}
-                // onEdit={HandleCardEdit}
-                onLike={HandleCardLike}
                 card={card}
               />
             </Grid>
