@@ -43,6 +43,20 @@ import UseStateWithObject from "../sandbox/use-state/UseStateWithObject";
 import UseStateWithComplexObject from "../sandbox/use-state/UseStateWithComplexObject";
 import UseStateWithArrayOfObjects from "../sandbox/use-state/UseStateWithArrayOfObjects";
 import SetPost from "../sandbox/use-state/SetPost";
+import LifeCycleHooksMenu from "../sandbox/life-cycle-hooks/LifeCycleHooksMenu";
+import LifeCycleExe from "../sandbox/life-cycle-hooks/LifeCycleExe";
+import CustomHookMenu from "../sandbox/custom-hooks/CustomHookMenu";
+import CustomName from "../sandbox/custom-hooks/CustomName";
+import CustomCounterHook from "../sandbox/custom-hooks/CustomCounterHook";
+import InitialCycle from "../sandbox/life-cycle-hooks/InitialCycle";
+import UseStateCycle from "../sandbox/life-cycle-hooks/UseStateCycle";
+import UseEffectAsComponentDidMount from "../sandbox/life-cycle-hooks/UseEffectAsComponentDidMount";
+import UseEffectAsComponentDidUpdate from "../sandbox/life-cycle-hooks/UseEffectAsComponentDidUpdate";
+import UseEffectAsComponentWillUnmount from "../sandbox/life-cycle-hooks/UseEffectAsComponentWillUnmount";
+import UseEffectNoDependencies from "../sandbox/life-cycle-hooks/UseEffectNoDependencies";
+import MemoizationMenu from "../sandbox/memoization/MemoizationMenu";
+import UseCallback from "../sandbox/memoization/use-callback/UseCallback";
+import UseMemo from "../sandbox/memoization/use-memo/UseMemo";
 
 const Router = () => {
   return (
@@ -142,6 +156,47 @@ const Router = () => {
             path={SANDBOX_ROUTES.USE_STATE_SET_POST}
             element={<SetPost />}
           />
+        </Route>
+        <Route
+          path={SANDBOX_ROUTES.LIFE_CYCLE_HOOKS}
+          element={<LifeCycleHooksMenu />}
+        >
+          <Route path={SANDBOX_ROUTES.INITIAL} element={<InitialCycle />} />
+          <Route
+            path={SANDBOX_ROUTES.LIFE_CYCLE_USE_STATE}
+            element={<UseStateCycle />}
+          />
+          <Route
+            path={SANDBOX_ROUTES.DID_MOUNT}
+            element={<UseEffectAsComponentDidMount />}
+          />
+          <Route
+            path={SANDBOX_ROUTES.DID_UPDATE}
+            element={<UseEffectAsComponentDidUpdate />}
+          />
+          <Route
+            path={SANDBOX_ROUTES.WILL_UNMOUNT}
+            element={<UseEffectAsComponentWillUnmount />}
+          />
+          <Route
+            path={SANDBOX_ROUTES.NO_DEPENDENCIES}
+            element={<UseEffectNoDependencies />}
+          />
+          <Route
+            path={SANDBOX_ROUTES.LIFE_CYCLE_EXE}
+            element={<LifeCycleExe />}
+          />
+        </Route>
+        <Route path={SANDBOX_ROUTES.CUSTOM} element={<CustomHookMenu />}>
+          <Route
+            path={SANDBOX_ROUTES.CUSTOM_COUNTER}
+            element={<CustomCounterHook />}
+          />
+          <Route path={SANDBOX_ROUTES.CUSTOM_NAME} element={<CustomName />} />
+        </Route>
+        <Route path={SANDBOX_ROUTES.MEMOIZATION} element={<MemoizationMenu />}>
+          <Route path={SANDBOX_ROUTES.USE_CALLBACK} element={<UseCallback />} />
+          <Route path={SANDBOX_ROUTES.USE_MEMO} element={<UseMemo />} />
         </Route>
       </Route>
       <Route path="*" element={<ErrorPage />} />
