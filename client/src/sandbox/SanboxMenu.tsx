@@ -4,8 +4,11 @@ import React from "react";
 import NavItem from "../layout/components/NavItem";
 import { SANDBOX_ROUTES } from "../routes/routesModel";
 import { Outlet } from "react-router-dom";
+import { useTheme } from "../providers/ThemeProvider";
 
 const SanboxMenu = () => {
+  const { isDark } = useTheme();
+  const color = isDark ? "white" : "black";
   return (
     <>
       <AppBar position="sticky" color="transparent">
@@ -13,40 +16,41 @@ const SanboxMenu = () => {
           <NavItem
             label="components"
             to={SANDBOX_ROUTES.COMPONENT}
-            color="black"
+            color={color}
           />
           <NavItem
             label="Conditional rendering"
             to={SANDBOX_ROUTES.CONDITIONAL_RENDERING}
-            color="black"
+            color={color}
           />
-          <NavItem label="Events" to={SANDBOX_ROUTES.EVENTS} color="black" />
+          <NavItem label="Events" to={SANDBOX_ROUTES.EVENTS} color={color} />
           <NavItem
             label="MUI-sandbox"
             to={SANDBOX_ROUTES.MUI_SANDBOX}
-            color="black"
+            color={color}
           />
-          <NavItem label="PROPS" to={SANDBOX_ROUTES.PROPS} color="black" />
+          <NavItem label="PROPS" to={SANDBOX_ROUTES.PROPS} color={color} />
           <NavItem
             label="use state hook"
             to={SANDBOX_ROUTES.USE_STATE_HOOK}
-            color="black"
+            color={color}
           />
           <NavItem
             label="life cycle hooks"
             to={SANDBOX_ROUTES.LIFE_CYCLE_HOOKS}
-            color="black"
+            color={color}
           />
           <NavItem
             label="custom hooks"
             to={SANDBOX_ROUTES.CUSTOM}
-            color="black"
+            color={color}
           />
           <NavItem
             label="memoization"
             to={SANDBOX_ROUTES.MEMOIZATION}
-            color="black"
+            color={color}
           />
+          <NavItem label="context" to={SANDBOX_ROUTES.CONTEXT} color={color} />
         </Toolbar>
       </AppBar>
       <Outlet />

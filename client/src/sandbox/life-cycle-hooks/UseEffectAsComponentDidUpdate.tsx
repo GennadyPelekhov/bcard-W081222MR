@@ -18,10 +18,13 @@ const UseEffectAsComponentDidUpdate = () => {
       {colorLog("In component return", "red")}
       <p> Counter: {count}</p>
       <p>Num: {num}</p>
-      <button style={{ padding: 2 }} onClick={() => setCount(prev => prev + 1)}>
+      <button
+        style={{ padding: 2 }}
+        onClick={() => setCount((prev) => prev + 1)}
+      >
         + count
       </button>
-      <button style={{ padding: 2 }} onClick={() => setNum(prev => prev + 1)}>
+      <button style={{ padding: 2 }} onClick={() => setNum((prev) => prev + 1)}>
         + num
       </button>
     </div>

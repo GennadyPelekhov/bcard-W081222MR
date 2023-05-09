@@ -68,5 +68,9 @@ export const SANDBOX_ROUTES = {
   MEMOIZATION: "memoization",
   USE_CALLBACK: "use-callback",
   USE_MEMO: "use-memo",
+
+  CONTEXT: "context",
+  NAME: "name",
+  SNACK: "snack",
 };
 export default ROUTES;

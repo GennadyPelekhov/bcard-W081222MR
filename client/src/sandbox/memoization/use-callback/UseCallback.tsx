@@ -5,12 +5,12 @@ const UseCallback = () => {
   const [age, setAge] = useState(1);
   const [height, setHeight] = useState(0);
 
-  // const incrementAge = () => setAge(prev => prev + 1);
-  // const incrementHeight = () => setHeight(prev => prev + 1);
+  // const incrementAge = () => setAge((prev) => prev + 1);
+  // const incrementHeight = () => setHeight((prev) => prev + 1);
 
-  const incrementAge = useCallback(() => setAge(prev => prev + 1), [age]);
+  const incrementAge = useCallback(() => setAge((prev) => prev + 1), [age]);
   const incrementHeight = useCallback(
-    () => setHeight(prev => prev + 1),
+    () => setHeight((prev) => prev + 1),
     [height]
   );
 

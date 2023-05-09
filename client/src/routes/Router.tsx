@@ -57,6 +57,8 @@ import UseEffectNoDependencies from "../sandbox/life-cycle-hooks/UseEffectNoDepe
 import MemoizationMenu from "../sandbox/memoization/MemoizationMenu";
 import UseCallback from "../sandbox/memoization/use-callback/UseCallback";
 import UseMemo from "../sandbox/memoization/use-memo/UseMemo";
+import ContextMenu from "../sandbox/context/ContextMenu";
+import A from "../sandbox/context/components/A";
 
 const Router = () => {
   return (
@@ -197,6 +199,10 @@ const Router = () => {
         <Route path={SANDBOX_ROUTES.MEMOIZATION} element={<MemoizationMenu />}>
           <Route path={SANDBOX_ROUTES.USE_CALLBACK} element={<UseCallback />} />
           <Route path={SANDBOX_ROUTES.USE_MEMO} element={<UseMemo />} />
+        </Route>
+        <Route path={SANDBOX_ROUTES.CONTEXT} element={<ContextMenu />}>
+          <Route path={SANDBOX_ROUTES.NAME} element={<A />} />
+          {/* <Route path={SANDBOX_ROUTES.SNACK} element={<SnackExample />} /> */}
         </Route>
       </Route>
       <Route path="*" element={<ErrorPage />} />
