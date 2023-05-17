@@ -1,5 +1,6 @@
 import { Typography } from "@mui/material";
 import React from "react";
+
 type Props = { title: string; content: string };
 
 const CardBodyRow: React.FC<Props> = ({ title, content }) => {

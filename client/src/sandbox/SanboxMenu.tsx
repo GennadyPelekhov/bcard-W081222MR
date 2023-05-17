@@ -51,6 +51,7 @@ const SanboxMenu = () => {
             color={color}
           />
           <NavItem label="context" to={SANDBOX_ROUTES.CONTEXT} color={color} />
+          <NavItem label="forms" to={SANDBOX_ROUTES.FORM} color={color} />
         </Toolbar>
       </AppBar>
       <Outlet />

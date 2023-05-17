@@ -72,5 +72,8 @@ export const SANDBOX_ROUTES = {
   CONTEXT: "context",
   NAME: "name",
   SNACK: "snack",
+
+  FORM: "form",
+  FORM_TEST: "form-test",
 };
 export default ROUTES;

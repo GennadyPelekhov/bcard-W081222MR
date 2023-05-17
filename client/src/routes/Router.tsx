@@ -60,6 +60,8 @@ import UseMemo from "../sandbox/memoization/use-memo/UseMemo";
 import ContextMenu from "../sandbox/context/ContextMenu";
 import A from "../sandbox/context/components/A";
 import SnackExample from "../sandbox/context/SnackExample";
+import FormsMenu from "../sandbox/forms/FormsMenu";
+import FormTest from "../sandbox/forms/FormTest";
 
 const Router = () => {
   return (
@@ -204,6 +206,9 @@ const Router = () => {
         <Route path={SANDBOX_ROUTES.CONTEXT} element={<ContextMenu />}>
           <Route path={SANDBOX_ROUTES.NAME} element={<A />} />
           <Route path={SANDBOX_ROUTES.SNACK} element={<SnackExample />} />
+        </Route>
+        <Route path={SANDBOX_ROUTES.FORM} element={<FormsMenu />}>
+          <Route path={SANDBOX_ROUTES.FORM_TEST} element={<FormTest />} />
         </Route>
       </Route>
       <Route path="*" element={<ErrorPage />} />
