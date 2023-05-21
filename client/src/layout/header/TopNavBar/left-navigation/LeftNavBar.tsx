@@ -6,8 +6,10 @@ import LogoIcon from "../Logo/LogoIcon";
 // import Button from "@mui/material/Button";
 import NavItem from "../../../components/NavItem";
 import ROUTES from "../../../../routes/routesModel";
+import { useUser } from "../../../../users/providers/UserProvider";
 
 const LeftNavBar = () => {
+  const { user } = useUser();
   return (
     <Box>
       <LogoIcon />
@@ -15,21 +17,13 @@ const LeftNavBar = () => {
 
       <Box sx={{ display: { xs: "none", md: "inline-flex" } }}>
         <NavItem label="About" to={ROUTES.ABOUT} />
-        {/* <Button color="inherit">
-          <Typography>About</Typography>
-        </Button> */}
-        <NavItem label="My Cards" to={ROUTES.MY_CARDS} />
-        {/* <Button color="inherit">
-          <Typography>My Cards</Typography>
-        </Button> */}
-        <NavItem label="Fav Cards" to={ROUTES.FAV_CARDS} />
-        {/* <Button color="inherit">
-          <Typography>Fav Cards</Typography>
-        </Button> */}
-        <NavItem label="Sandbox" to={ROUTES.SANDBOX} />
-        {/* <Button color="inherit">
-          <Typography>Sandbox</Typography>
-        </Button> */}
+        {user && user.isBusiness && (
+          <NavItem label="My Cards" to={ROUTES.MY_CARDS} />
+        )}
+        {user && <NavItem label="Fav Cards" to={ROUTES.FAV_CARDS} />}
+        {user && user.isAdmin && (
+          <NavItem label="Sandbox" to={ROUTES.SANDBOX} />
+        )}
       </Box>
     </Box>
   );

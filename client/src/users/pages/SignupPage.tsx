@@ -3,10 +3,10 @@ import React from "react";
 import PageHeader from "../../components/PageHeader";
 import { Navigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModel";
+import { useUser } from "../providers/UserProvider";
 
 const SignupPage = () => {
-  const user = false;
-  //   const user = true;
+  const { user } = useUser();
 
   if (user) return <Navigate replace to={ROUTES.ROOT} />;
   return (

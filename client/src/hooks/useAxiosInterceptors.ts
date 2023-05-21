@@ -1,38 +1,26 @@
 import axios from "axios";
 import { useSnack } from "../providers/SnackbarProvider";
+import { useUser } from "../users/providers/UserProvider";
+import { useEffect } from "react";
 
 const useAxiosInterceptors = () => {
   const snack = useSnack();
-  // axios.interceptors.request.use(
-  //   (requestObject) => {
-  //     console.log("in useAxiosInterceptors resolve");
-  //     // console.log(requestObject);
-  //     // requestObject.user = "David";
-  //   //   if (!requestObject.user) throw new Error("error!!");
+  const { token } = useUser();
 
-  //     return Promise.resolve(requestObject);
-  //   },
-  //   (err) => {
-  //     console.log("in useAxiosInterceptors error");
-  //     console.log(err);
-  //     return Promise.reject(err);
-  //   }
-  // );
+  useEffect(() => {
+    axios.defaults.headers.common["x-auth-token"] = token;
 
-  axios.interceptors.request.use((data) => Promise.resolve(data), null);
-  // axios.interceptors.response.use(
-  //   (data) => {
-  //     return Promise.resolve(data);
-  //   },
-  //   (error) => {
-  //     const expectedError = error.response && error.response.status >= 400;
-  //     if (expectedError) snack("error", error.message);
-  //     return Promise.reject(error);
-  axios.interceptors.response.use(null, (error: any) => {
-    const expectedError = error.response && error.response.status >= 400;
-    if (expectedError) snack("error", error.message);
-    return Promise.reject(error);
-  });
+    axios.interceptors.request.use((data) => {
+      console.log(data);
+      return Promise.resolve(data);
+    }, null);
+
+    axios.interceptors.response.use(null, (error: any) => {
+      const expectedError = error.response && error.response.status >= 400;
+      if (expectedError) snack("error", error.message);
+      return Promise.reject(error);
+    });
+  }, [token, snack]);
 };
 
 export default useAxiosInterceptors;

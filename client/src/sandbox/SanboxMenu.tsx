@@ -2,13 +2,18 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import React from "react";
 import NavItem from "../layout/components/NavItem";
-import { SANDBOX_ROUTES } from "../routes/routesModel";
-import { Outlet } from "react-router-dom";
+import ROUTES, { SANDBOX_ROUTES } from "../routes/routesModel";
+import { Navigate, Outlet } from "react-router-dom";
 import { useTheme } from "../providers/ThemeProvider";
+import { useUser } from "../users/providers/UserProvider";
 
 const SanboxMenu = () => {
   const { isDark } = useTheme();
   const color = isDark ? "white" : "black";
+
+  const { user } = useUser();
+  if (!user || !user.isAdmin) return <Navigate to={ROUTES.ROOT} />;
+
   return (
     <>
       <AppBar position="sticky" color="transparent">
