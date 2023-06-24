@@ -9,10 +9,12 @@ import Logged from "./Logged";
 import NotLogged from "./NotLogged";
 import { useTheme } from "../../../../providers/ThemeProvider";
 import { useUser } from "../../../../users/providers/UserProvider";
+import { useMenu } from "../menu/MenuProvider";
 
 const RightNavBar = () => {
   const { isDark, toggleDarkMode } = useTheme();
   const { user } = useUser();
+  const setOpen = useMenu();
 
   return (
     <>
@@ -28,7 +30,7 @@ const RightNavBar = () => {
         {user && <Logged />}
       </Box>
 
-      <MoreButton onClick={() => console.log("you clicked The more button!")} />
+      <MoreButton onClick={() => setOpen(true)} />
     </>
   );
 };

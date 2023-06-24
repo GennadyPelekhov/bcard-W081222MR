@@ -1,6 +1,6 @@
 import React from "react";
 import MuiCard from "@mui/material/Card";
-import CardInterface from "../../interfaces/CardInterface";
+import CardInterface from "../../models/interfaces/CardInterface";
 import CardHead from "./CardHead";
 import CardBody from "./CardBody";
 import CardActionBar from "./CardActionBar";
@@ -10,9 +10,11 @@ import ROUTES from "../../../routes/routesModel";
 
 type Props = {
   card: CardInterface;
+  onDelete: (id: string) => void;
+  onLike: () => void;
 };
 
-const Card: React.FC<Props> = ({ card }) => {
+const Card: React.FC<Props> = ({ card, onDelete, onLike }) => {
   const navigate = useNavigate();
 
   return (
@@ -23,7 +25,14 @@ const Card: React.FC<Props> = ({ card }) => {
         <CardHead image={card.image} />
         <CardBody card={card} />
       </CardActionArea>
-      <CardActionBar cardId={card._id} />
+      <CardActionBar
+        cardUserId={card.user_id}
+        onDelete={onDelete}
+        cardId={card._id}
+        onLike={onLike}
+        cardLikes={card.likes}
+        phone={card.phone}
+      />
     </MuiCard>
   );
 };

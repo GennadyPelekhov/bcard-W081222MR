@@ -12,7 +12,7 @@ const handleBadRequest = async (validator, error) => {
   return Promise.reject(error);
 };
 
-const handleJoiError = async error => {
+const handleJoiError = async (error) => {
   const joiError = new Error(error.details[0].message);
   return handleBadRequest("Joi", joiError);
 };

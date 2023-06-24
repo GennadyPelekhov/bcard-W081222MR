@@ -19,6 +19,7 @@ const {
   validateUserUpdate,
 } = require("../validations/userValidationService");
 const router = express.Router();
+const { verifyToken } = require("../../auth/Providers/jwt");
 
 router.post("/", async (req, res) => {
   try {
@@ -87,37 +88,56 @@ router.get("/:id", auth, async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", auth, async (req, res) => {
   try {
-    const { id } = req.params;
-    let user = req.body;
+    const userId = req.params.id;
+    const user = req.body;
+
     const { error } = validateUserUpdate(user);
     if (error)
       return handleError(res, 400, `Joi Error: ${error.details[0].message}`);
+    const normalizedUser = normalizeUser(user);
+    const newUser = await updateUser(userId, normalizedUser);
 
-    user = normalizeUser(user);
-    user = await updateUser(id, user);
-    return res.send(user);
+    return res.send(newUser);
   } catch (error) {
     return handleError(res, error.status || 500, error.message);
   }
 });
 
-router.patch("/:id", async (req, res) => {
+router.patch("/:id", auth, async (req, res) => {
   try {
     const { id } = req.params;
-    const user = await changeUserBusinessStatus(id);
-    return res.send(user);
+    const user = req.user;
+
+    if (id !== user._id && !user.isAdmin)
+      return handleError(
+        res,
+        403,
+        "Authorization Error: You must bean an admin type user or the registered user to update its business status"
+      );
+
+    const changedStatusUser = await changeUserBusinessStatus(id);
+    return res.send(changedStatusUser);
   } catch (error) {
     return handleError(res, error.status || 500, error.message);
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", auth, async (req, res) => {
   try {
     const { id } = req.params;
-    const user = await deleteUser(id);
-    return res.send(user);
+    const user = req.user;
+
+    if (id !== user._id && !user.isAdmin)
+      return handleError(
+        res,
+        403,
+        "Authorization Error: You must be an admin type user or the registered user to delete this user"
+      );
+
+    const userDeleted = await deleteUser(id);
+    return res.send(userDeleted);
   } catch (error) {
     return handleError(res, error.status || 500, error.message);
   }

@@ -1,5 +1,6 @@
 import axios from "axios";
-import CardInterface from "../interfaces/CardInterface";
+import CardInterface from "../models/interfaces/CardInterface";
+import { NormalizedEditCard } from "../models/types/cardTypes";
 
 const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8181";
 
@@ -37,7 +38,7 @@ export const getMyCards = async () => {
   }
 };
 
-export const createCard = async (card: CardInterface) => {
+export const createCard = async (card: object) => {
   try {
     const { data } = await axios.post<CardInterface>(`${apiUrl}/cards`, card);
     return Promise.resolve(data);
@@ -47,13 +48,15 @@ export const createCard = async (card: CardInterface) => {
   }
 };
 
-export const editCard = async (card: CardInterface) => {
+export const editCard = async (normalizedCard: NormalizedEditCard) => {
   try {
+    const cardToServer = { ...normalizedCard };
+    delete cardToServer._id;
     const { data } = await axios.put<CardInterface>(
-      `${apiUrl}/cards/${card._id}`,
-      card
+      `${apiUrl}/cards/${normalizedCard._id}`,
+      cardToServer
     );
-    return Promise.resolve(data);
+    return data;
   } catch (error) {
     if (axios.isAxiosError(error)) return Promise.reject(error.message);
     return Promise.reject("An unexpected error occurred!");

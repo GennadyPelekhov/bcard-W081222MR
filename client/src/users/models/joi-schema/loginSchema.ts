@@ -3,7 +3,7 @@ import Joi from "joi";
 const loginSchema = {
   email: Joi.string()
     .ruleset.pattern(/^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/)
-    .rule({ message: "Please enter a valid mail" })
+    .rule({ message: "Please enter a valid email address" })
     .required(),
 
   password: Joi.string()

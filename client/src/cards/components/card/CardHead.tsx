@@ -1,6 +1,6 @@
 import React from "react";
 import { CardMedia } from "@mui/material";
-import ImageInterface from "../../interfaces/ImageInterface";
+import ImageInterface from "../../models/interfaces/ImageInterface";
 
 type Props = { image: ImageInterface };
 

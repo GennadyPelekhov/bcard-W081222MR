@@ -1,6 +1,6 @@
 const Joi = require("joi");
 
-const validateCardWithJoi = card => {
+const validateCardWithJoi = (card) => {
   const urlRegex =
     /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/;
 
@@ -10,25 +10,25 @@ const validateCardWithJoi = card => {
     description: Joi.string().min(2).max(1024).required(),
     phone: Joi.string()
       .ruleset.regex(/0[0-9]{1,2}\-?\s?[0-9]{3}\s?[0-9]{4}/)
-      .rule({ message: 'card "phone" mast be a valid phone number' })
+      .rule({ message: 'card "phone" must be a valid phone number' })
       .required(),
     email: Joi.string()
       .ruleset.pattern(
         /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
       )
-      .rule({ message: 'card "mail" mast be a valid mail' })
+      .rule({ message: 'card "email" must be a valid email' })
       .required(),
 
     web: Joi.string()
       .ruleset.regex(urlRegex)
-      .rule({ message: 'card "web" mast be a valid url' })
+      .rule({ message: 'card "web" must be a valid url' })
       .allow(""),
 
     image: Joi.object()
       .keys({
         url: Joi.string()
           .ruleset.regex(urlRegex)
-          .rule({ message: 'card.image "url" mast be a valid url' })
+          .rule({ message: 'card.image "url" must be a valid url' })
           .allow(""),
         alt: Joi.string().min(2).max(256).allow(""),
       })

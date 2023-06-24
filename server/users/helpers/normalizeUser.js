@@ -1,17 +1,17 @@
-const normalizeUser = rawUser => {
+const normalizeUser = (rawUser) => {
   const name = { ...rawUser.name, middle: rawUser.name.middle || "" };
 
   const image = {
     ...rawUser.image,
     url:
       rawUser.image.url ||
-      "https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805_960_720.png",
-    alt: rawUser.image.alt || "Business card image",
+      "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+    alt: rawUser.image.alt || "User image",
   };
 
   const address = {
     ...rawUser.address,
-    state: rawUser.address.state || "not defined",
+    state: rawUser.address.state || "",
   };
 
   const user = {

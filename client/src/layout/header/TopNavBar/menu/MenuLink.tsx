@@ -2,6 +2,7 @@ import React from "react";
 import NavBarLink from "../../../components/NavBarLink";
 import { makeFirstLetterCapital } from "./utils/algoMethods";
 import MenuItem from "@mui/material/MenuItem";
+import { useTheme } from "../../../../providers/ThemeProvider";
 
 type Props = {
   label: string;
@@ -16,8 +17,11 @@ const MenuLink: React.FC<Props> = ({
   onClick,
   styles = {},
 }) => {
+  const { isDark } = useTheme();
+  const color = isDark ? "white" : "black";
+
   return (
-    <NavBarLink to={navigateTo} color="black">
+    <NavBarLink to={navigateTo} color={color}>
       <MenuItem sx={{ ...styles }} onClick={onClick}>
         {makeFirstLetterCapital(label)}
       </MenuItem>

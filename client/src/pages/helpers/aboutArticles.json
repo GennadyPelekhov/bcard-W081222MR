@@ -1,0 +1,90 @@
+[
+  {
+    "article": "\n Welcome to our business card app! Our mission is to provide a simple and efficient way for individuals and businesses to create, manage, and exchange their professional contact information.\n\n Our app makes it easy for you to create custom business cards that showcase your unique style and brand.\n\n With our app, you can also manage multiple business cards for different purposes, and share your card with others.",
+    "image": {
+      "url": "/assets/images/card.jpg",
+      "alt": "card"
+    },
+    "width": "50%"
+  },
+  {
+    "article": " \n You can start using our application without registration. On the home page you can see all the businesses available and you can reach the desired business by typing the name in the search bar.\n\nClicking on the 'Phone' icon on specific card will make a call to the business.\n\n Additional options will be available to you after a short registration process.",
+    "image": {
+      "url": "/assets/images/homepage.png",
+      "alt": "homepage"
+    },
+    "width": "100%"
+  },
+  {
+    "article": " \n Clicking on the specific card you selected brings you to a page with additional details, such as a detailed description of the business, contact information and a map.",
+    "image": {
+      "url": "/assets/images/card-details.png",
+      "alt": "business details"
+    },
+    "width": "100%"
+  },
+  {
+    "article": " \n In order to register on the website, you need to click on the 'SIGNUP' button on the top-right. After filling in all the required fields, click on the 'Submit' button to submit your details and complete the registration process. You can choose whether to register as a regular customer or a business customer. Of course, you can always update your profile in the future.\n\n Make sure you provide a valid and relevant information, such as email and phone number, as it can be used for account verification and communication purposes.\n\nRemember, for security purposes, the password should be strong and memorable, and should include a combination of numerical and alphabetical characters.",
+    "image": {
+      "url": "/assets/images/signup-page.png",
+      "alt": "signup page"
+    },
+    "width": "100%"
+  },
+  {
+    "article": "\n Once you have registered, you can log in by clicking on the 'LOGIN' button on the top-right, and filling out email and password fields with data that you have registered with.\n\n It is better to  save the login information, because if you make a mistake when entering data 3 times, your access to the  website will be blocked for the next 24 hours.",
+    "image": {
+      "url": "/assets/images/login-page.png",
+      "alt": "login page"
+    },
+    "width": "100%"
+  },
+  {
+    "article": " \n  Once you logged in, you will be able to see your profile , change details  or exit by clicking on Avatar image on top-right.\n\n  In case you registered as a REGULAR user, you can mark a business card as a favorite by clicking on the 'Heart' icon that appears on each card. You can choose several number of cards as your favorite.",
+    "image": {
+      "url": "/assets/images/regular-user.png",
+      "alt": "regular user"
+    },
+    "width": "100%"
+  },
+  {
+    "article": "\n  Clicking on the 'Fav Cards' button in the top navigation bar or 'Favorites' in the bottom , brings you to the page where you can find all the cards that are marked as favorites. Another click on the 'Heart' icon will remove the card from the list of favorites.",
+    "image": {
+      "url": "/assets/images/favorite-cards-page.png",
+      "alt": "favorite cards"
+    },
+    "width": "100%"
+  },
+  {
+    "article": " \n  If you have registered as a BUSINESS user additional options, such as creating a business card, open up to you.\n\n To create a new business card click on the 'MY CARDS' button that appears in the top or bottom navigation bar.  ",
+    "image": {
+      "url": "/assets/images/business-user.png",
+      "alt": "business user"
+    },
+    "width": "100%"
+  },
+  {
+    "article": " \n  On this page you can manage all the business cards you have created.\n\nIf you don't have a business card yet or if you want to create an additional one, all you have to do is click on 'PLUS' button located in the bottom right.",
+    "image": {
+      "url": "/assets/images/mycards-page.png",
+      "alt": "my cards"
+    },
+    "width": "100%"
+  },
+  {
+    "article": " \n In order to create a new business card you need to fill all the required form fields  ( marked with the '*' ) and press on the 'Submit' button.\n\n You will receive a notification about creating a new business card , after that you will return to the 'MY CARDS' page. ",
+    "image": {
+      "url": "/assets/images/create-card-page.png",
+      "alt": "create card"
+    },
+    "width": "100%"
+  },
+  {
+    "article": " \n  Now the new business card you created will appear on the page next to other cards you created.\n\n In order to manage your business cards use the icons located at the bottom of each card. You can edit details of a business card or delete the entire card.\n\n **If you have any questions or concerns please feel free to contact us.",
+    "image": {
+      "url": "/assets/images/created-card.png",
+      "alt": "created card"
+    },
+    "width": "100%"
+  }
+]

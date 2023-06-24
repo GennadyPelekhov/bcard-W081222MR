@@ -62,20 +62,36 @@ import A from "../sandbox/context/components/A";
 import SnackExample from "../sandbox/context/SnackExample";
 import FormsMenu from "../sandbox/forms/FormsMenu";
 import FormTest from "../sandbox/forms/FormTest";
+import CreateCardPage from "../cards/pages/CreateCardPage";
+import MyCardsPage from "../cards/pages/MyCardsPage";
+import FavCardsPage from "../cards/pages/FavCardsPage";
+import EditUserPage from "../users/pages/EditUserPage";
+import UsersPage from "../users/pages/UsersPage";
+import UserProfilePage from "../users/pages/UserProfilePage";
 
 const Router = () => {
   return (
     <Routes>
       <Route path={ROUTES.ROOT} element={<CardsPage />} />
       <Route path={ROUTES.CARDS} element={<CardsPage />} />
+      <Route path={ROUTES.MY_CARDS} element={<MyCardsPage />} />
+      <Route path={ROUTES.FAV_CARDS} element={<FavCardsPage />} />
       <Route
         path={`${ROUTES.CARD_DETAILS}/:cardId`}
         element={<CardDetailsPage />}
       />
       <Route path={`${ROUTES.CARD_EDIT}/:cardId`} element={<CardEditPage />} />
+
+      <Route path={ROUTES.CREATE_CARD} element={<CreateCardPage />} />
       <Route path={ROUTES.ABOUT} element={<AboutPage />} />
+      <Route path={ROUTES.CRM} element={<UsersPage />} />
       <Route path={ROUTES.SINGUP} element={<SignupPage />} />
       <Route path={ROUTES.LOGIN} element={<LoginPage />} />
+      <Route
+        path={`${ROUTES.USER_PROFILE}/:userId`}
+        element={<UserProfilePage />}
+      />
+      <Route path={`${ROUTES.EDIT_USER}/:userId`} element={<EditUserPage />} />
       <Route path={ROUTES.SANDBOX} element={<SanboxMenu />}>
         <Route path={SANDBOX_ROUTES.COMPONENT} element={<ComponentMenu />}>
           <Route path={SANDBOX_ROUTES.TEMPLATE} element={<Template />} />

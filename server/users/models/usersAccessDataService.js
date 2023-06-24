@@ -4,6 +4,8 @@ const lodash = require("lodash");
 const { comparePassword } = require("../helpers/bcrypt");
 const { generateAuthToken } = require("../../auth/Providers/jwt");
 const { handleBadRequest } = require("../../utils/handleErrors");
+const LoginUserSchema = require("../models/mongodb/Login");
+const bcrypt = require("bcrypt");
 
 const registerUser = async (normalizedUser) => {
   if (DB === "MONGODB") {
@@ -28,15 +30,41 @@ const registerUser = async (normalizedUser) => {
 const loginUser = async ({ email, password }) => {
   if (DB === "MONGODB") {
     try {
+      const nowTime = new Date();
       const user = await User.findOne({ email });
       if (!user)
         throw new Error("Authentication Error: Invalid email or password");
 
       const validPassword = comparePassword(password, user.password);
-      if (!validPassword)
-        throw new Error("Authentication Error: Invalid email or password");
+      let counter = await LoginUserSchema.findOne({ userId: user._id });
+      if (counter) {
+        if (counter.counter.length === 3) {
+          const diff = nowTime - counter.counter[2];
+          const day = 3600 * 1000 * 24;
+          if (diff < day) throw new Error(`You need to wait 24 hours to login`);
+          await LoginUserSchema.findByIdAndDelete(counter._id);
+        }
+      }
+      if (!validPassword) {
+        if (!counter) {
+          let login = { userId: user._id, counter: [nowTime] };
+          login = new LoginUserSchema(login);
+          await login.save();
+          throw new Error("Authentication Error: Invalid email or password");
+        }
+        if (counter.counter.length < 3) {
+          counter.counter.push(nowTime);
+          await LoginUserSchema.findByIdAndUpdate(counter._id, {
+            counter: counter.counter,
+          });
+          throw new Error("Invalid email or Password.");
+        }
+      }
 
       const token = generateAuthToken(user);
+      if (counter) {
+        await LoginUserSchema.findByIdAndDelete(counter._id);
+      }
       return Promise.resolve(token);
     } catch (error) {
       error.status = 400;
@@ -45,6 +73,7 @@ const loginUser = async ({ email, password }) => {
   }
   return Promise.resolve("loginUser user not in mongodb");
 };
+
 
 const getUsers = async () => {
   if (DB === "MONGODB") {
@@ -79,37 +108,63 @@ const getUser = async (userId) => {
 const updateUser = async (userId, normalizedUser) => {
   if (DB === "MONGODB") {
     try {
-      return Promise.resolve({ normalizedUser, userId });
+      const { password, ...data } = normalizedUser;
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const updateUser = { ...data, password: hashedPassword };
+
+      const user = await User.findByIdAndUpdate(userId, updateUser, {
+        new: true,
+      });
+      return Promise.resolve(user);
     } catch (error) {
       error.status = 400;
       return Promise.reject(error);
     }
   }
-  return Promise.resolve("card update not in mongodb");
+  return Promise.resolve("user update not in mongodb");
 };
 
 const changeUserBusinessStatus = async (userId) => {
   if (DB === "MONGODB") {
     try {
-      return Promise.resolve(`user no. ${userId} change his business status!`);
+      const pipeline = [{ $set: { isBusiness: { $not: "$isBusiness" } } }];
+      const user = await User.findByIdAndUpdate(userId, pipeline, {
+        new: true,
+      }).select(["-password", "-__v"]);
+
+      if (!user)
+        throw new Error(
+          "Could not update this user isBusiness status because a user with this ID cannot be found in the database"
+        );
+
+      return Promise.resolve(user);
     } catch (error) {
       error.status = 400;
       return Promise.reject(error);
     }
   }
-  return Promise.resolve("card liked not in mongodb");
+  return Promise.resolve("user change isBusiness not in mongodb");
 };
 
 const deleteUser = async (userId) => {
   if (DB === "MONGODB") {
     try {
-      return Promise.resolve(`user no. ${userId} deleted!`);
+      const user = await User.findByIdAndDelete(userId, {
+        password: 0,
+        __v: 0,
+      });
+
+      if (!user)
+        throw new Error(
+          "Could not delete this user because a user with this ID cannot be found in the database"
+        );
+      return Promise.resolve(user);
     } catch (error) {
       error.status = 400;
       return Promise.reject(error);
     }
   }
-  return Promise.resolve("card deleted not in mongodb");
+  return Promise.resolve("user deleted not in mongodb");
 };
 
 exports.registerUser = registerUser;

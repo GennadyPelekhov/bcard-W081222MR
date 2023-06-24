@@ -1,5 +1,5 @@
 import React from "react";
-import CardInterface from "../interfaces/CardInterface";
+import CardInterface from "../models/interfaces/CardInterface";
 import Spinner from "../../components/Spinner";
 import Error from "../../components/Error";
 import Cards from "./Cards";
@@ -9,12 +9,21 @@ type Props = {
   isLoading: boolean;
   error: string | null;
   cards: CardInterface[] | null;
+  onDelete: (id: string) => void;
+  onLike: () => void;
 };
 
-const CardsFeedback: React.FC<Props> = ({ isLoading, error, cards }) => {
+const CardsFeedback: React.FC<Props> = ({
+  isLoading,
+  error,
+  cards,
+  onDelete,
+  onLike,
+}) => {
   if (isLoading) return <Spinner />;
   if (error) return <Error errorMessage={error} />;
-  if (cards && cards.length) return <Cards cards={cards} />;
+  if (cards && cards.length)
+    return <Cards cards={cards} onDelete={onDelete} onLike={onLike} />;
   if (cards && !cards.length)
     return (
       <Typography variant="h3">
@@ -25,4 +34,4 @@ const CardsFeedback: React.FC<Props> = ({ isLoading, error, cards }) => {
   return null;
 };
 
-export default CardsFeedback;
+export default React.memo(CardsFeedback);

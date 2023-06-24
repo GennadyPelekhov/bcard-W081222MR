@@ -8,9 +8,10 @@
     "test": "node test.js",
     "dev": "export || cross-env NODE_ENV=development&& nodemon ."
   },
-  "author": "David Yakin",
+  "author": "Gennadi Pelekhov",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
     "chalk": "^4.1.1",
     "config": "^3.3.8",

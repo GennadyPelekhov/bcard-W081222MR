@@ -29,7 +29,7 @@ const schema = new mongoose.Schema({
   isBusiness: { type: Boolean, default: false },
   createdAt: {
     type: Date,
-    default: Date.now,
+    default: new Date(),
   },
 });
 

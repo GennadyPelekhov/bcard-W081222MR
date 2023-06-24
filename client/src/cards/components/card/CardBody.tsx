@@ -1,5 +1,5 @@
 import React from "react";
-import CardInterface from "../../interfaces/CardInterface";
+import CardInterface from "../../models/interfaces/CardInterface";
 import { Box, CardContent, CardHeader, Divider } from "@mui/material";
 import CardBodyRow from "./CardBodyRow";
 
@@ -16,7 +16,7 @@ const CardBody: React.FC<Props> = ({ card }) => {
         <CardBodyRow title="Phone" content={phone} />
         <CardBodyRow
           title="Address"
-          content={`${street} ${houseNumber} ${city} ${country}`}
+          content={`${street} ${houseNumber}, ${city}, ${country}`}
         />
         <CardBodyRow title="Card Number" content={String(bizNumber)} />
       </Box>

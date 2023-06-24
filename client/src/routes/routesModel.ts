@@ -5,10 +5,14 @@ const ROUTES = {
   MY_CARDS: "/my-cards",
   FAV_CARDS: "/fav-cards",
   CARD_DETAILS: "/card-info",
+  CREATE_CARD: "/create-card",
   CARD_EDIT: "/edit-card",
-  SANDBOX: "/sandbox",
   SINGUP: "/signup",
   LOGIN: "/login",
+  USER_PROFILE: "/user-info",
+  EDIT_USER: "/edit-user",
+  SANDBOX: "/sandbox",
+  CRM: "/crm",
 };
 
 export const SANDBOX_ROUTES = {

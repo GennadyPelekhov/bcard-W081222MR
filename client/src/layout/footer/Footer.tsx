@@ -14,7 +14,13 @@ const Footer = () => {
   const { user } = useUser();
   return (
     <Paper
-      sx={{ position: "sticky", bottom: 0, left: 0, right: 0 }}
+      sx={{
+        position: "sticky",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        background: "#E3F2FD",
+      }}
       elevation={3}
     >
       <BottomNavigation showLabels>

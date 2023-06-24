@@ -1,20 +1,17 @@
 import Container from "@mui/material/Container";
 import React from "react";
 import PageHeader from "../../components/PageHeader";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModel";
 import useForm from "../../forms/hooks/useForm";
 import Form from "../../forms/components/Form";
 import Input from "../../forms/components/Input";
-import { Box, Typography } from "@mui/material";
-import FormButton from "../../forms/components/FormButton";
 import loginSchema from "../models/joi-schema/loginSchema";
 import initialLoginForm from "../helpers/initialForms/initialLoginForm";
 import useHandleUser from "../hooks/useHandleUser";
+import FormLink from "../../forms/components/FormLink";
 
 const LoginPage = () => {
-  const navigate = useNavigate();
-
   const {
     handleLogin,
     value: { user },
@@ -33,7 +30,7 @@ const LoginPage = () => {
   return (
     <Container
       sx={{
-        padding: 8,
+        padding: 2,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -44,9 +41,14 @@ const LoginPage = () => {
         title="Login Page"
         subtitle="In order to login ,fill out the form and click the submit button"
       />
+      <FormLink
+        node="register"
+        text="If you haven't registered yet , click here..."
+        to={ROUTES.SINGUP}
+      />
       <Container
         sx={{
-          height: "40vh",
+          minHeight: "40vh",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -78,15 +80,6 @@ const LoginPage = () => {
           />
         </Form>
       </Container>
-      <Box sx={{ maxWidth: "450px" }}>
-        <Typography>If you haven't registered yet , click here...</Typography>
-        <FormButton
-          node="register"
-          onClick={() => navigate(ROUTES.SINGUP)}
-          variant="outlined"
-          color="secondary"
-        />
-      </Box>
     </Container>
   );
 };
